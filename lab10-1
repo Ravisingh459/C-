@@ -1,0 +1,28 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter total bill amount: ");
+        double amount = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter category (senior / regular / industrial): ");
+        string category = Console.ReadLine().ToLower();
+
+        double discount = 0;
+
+        if (category == "senior")
+            discount = 0.20;   // 20%
+        else if (category == "regular")
+            discount = 0.10;   // 10%
+        else if (category == "industrial")
+            discount = 0.30;   // 30%
+        else
+            Console.WriteLine("Invalid category!");
+
+        double finalAmount = amount - (amount * discount);
+
+        Console.WriteLine("Final Bill: ₹" + finalAmount);
+    }
+}

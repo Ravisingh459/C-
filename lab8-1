@@ -1,0 +1,37 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter starting number: ");
+        int start = int.Parse(Console.ReadLine());
+
+        Console.Write("Enter ending number: ");
+        int end = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Prime numbers between " + start + " and " + end + " are:");
+
+        for (int num = start; num <= end; num++)
+        {
+            if (IsPrime(num))
+            {
+                Console.Write(num + " ");
+            }
+        }
+    }
+
+    static bool IsPrime(int n)
+    {
+        if (n <= 1)
+            return false;
+
+        for (int i = 2; i <= Math.Sqrt(n); i++)
+        {
+            if (n % i == 0)
+                return false;
+        }
+
+        return true;
+    }
+}

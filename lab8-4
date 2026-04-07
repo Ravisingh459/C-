@@ -1,0 +1,45 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string password;
+
+        while (true)
+        {
+            Console.Write("Enter a password: ");
+            password = Console.ReadLine();
+
+            if (IsValidPassword(password))
+            {
+                Console.WriteLine("Password is valid!");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid password. Try again.\n");
+            }
+        }
+    }
+
+    static bool IsValidPassword(string password)
+    {
+        if (password.Length < 8)
+            return false;
+
+        bool hasUpper = false;
+        bool hasDigit = false;
+
+        foreach (char c in password)
+        {
+            if (char.IsUpper(c))
+                hasUpper = true;
+
+            if (char.IsDigit(c))
+                hasDigit = true;
+        }
+
+        return hasUpper && hasDigit;
+    }
+}

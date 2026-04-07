@@ -1,0 +1,39 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter age: ");
+        int age = int.Parse(Console.ReadLine());
+
+        Console.Write("Enter monthly income: ");
+        double income = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter credit score: ");
+        int creditScore = int.Parse(Console.ReadLine());
+
+        if (age >= 21)
+        {
+            if (income >= 25000)
+            {
+                if (creditScore >= 700)
+                {
+                    Console.WriteLine("Loan Approved");
+                }
+                else
+                {
+                    Console.WriteLine("Rejected: Low Credit Score");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Rejected: Low Income");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Rejected: Age below 21");
+        }
+    }
+}
