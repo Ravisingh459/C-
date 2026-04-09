@@ -1,0 +1,58 @@
+using System;
+
+class Employee
+{
+    // Instance variables
+    int employeeId;
+    string name;
+    double salary;
+
+    // Default Constructor
+    public Employee()
+    {
+        employeeId = 0;
+        name = "Unknown";
+        salary = 0;
+    }
+
+    // Parameterized Constructor
+    public Employee(int id, string n, double s)
+    {
+        employeeId = id;
+        name = n;
+        salary = s;
+    }
+
+    // Method to calculate annual salary
+    public double CalculateAnnualSalary()
+    {
+        return salary * 12;
+    }
+
+    // Method to display employee details
+    public void Display()
+    {
+        Console.WriteLine("Employee ID: " + employeeId);
+        Console.WriteLine("Name: " + name);
+        Console.WriteLine("Monthly Salary: " + salary);
+        Console.WriteLine("Annual Salary: " + CalculateAnnualSalary());
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Object using default constructor
+        Employee emp1 = new Employee();
+        Console.WriteLine("Employee 1 (Default Constructor):");
+        emp1.Display();
+
+        Console.WriteLine();
+
+        // Object using parameterized constructor
+        Employee emp2 = new Employee(1, "Amit", 25000);
+        Console.WriteLine("Employee 2 (Parameterized Constructor):");
+        emp2.Display();
+    }
+}

@@ -1,0 +1,95 @@
+using System;
+
+// Base class
+class Account
+{
+    protected double balance;
+
+    public Account(double b)
+    {
+        balance = b;
+    }
+
+    // Deposit method
+    public virtual void Deposit(double amount)
+    {
+        balance += amount;
+        Console.WriteLine("Deposited: " + amount);
+    }
+
+    // Withdraw method
+    public virtual void Withdraw(double amount)
+    {
+        balance -= amount;
+        Console.WriteLine("Withdrawn: " + amount);
+    }
+
+    public void DisplayBalance()
+    {
+        Console.WriteLine("Balance: " + balance);
+    }
+}
+
+// Savings Account class
+class SavingsAccount : Account
+{
+    public SavingsAccount(double b) : base(b) { }
+
+    // Override Withdraw (limit: cannot go below 0)
+    public override void Withdraw(double amount)
+    {
+        if (balance >= amount)
+        {
+            balance -= amount;
+            Console.WriteLine("Withdrawn from Savings: " + amount);
+        }
+        else
+        {
+            Console.WriteLine("Insufficient balance in Savings Account!");
+        }
+    }
+}
+
+// Current Account class
+class CurrentAccount : Account
+{
+    double overdraftLimit = 1000;
+
+    public CurrentAccount(double b) : base(b) { }
+
+    // Override Withdraw (allow overdraft)
+    public override void Withdraw(double amount)
+    {
+        if (balance + overdraftLimit >= amount)
+        {
+            balance -= amount;
+            Console.WriteLine("Withdrawn from Current: " + amount);
+        }
+        else
+        {
+            Console.WriteLine("Overdraft limit exceeded!");
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Savings Account
+        SavingsAccount sa = new SavingsAccount(2000);
+        Console.WriteLine("Savings Account:");
+        sa.Deposit(500);
+        sa.Withdraw(3000);
+        sa.DisplayBalance();
+
+        Console.WriteLine();
+
+        // Current Account
+        CurrentAccount ca = new CurrentAccount(2000);
+        Console.WriteLine("Current Account:");
+        ca.Deposit(500);
+        ca.Withdraw(3000);
+        ca.DisplayBalance();
+    }
+}
